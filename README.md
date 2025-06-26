@@ -56,3 +56,8 @@ En un mundo donde las amenazas cibernéticas son cada vez más frecuentes y sofi
 
 # Ejecutar el script principal
 python Threatlens1.py
+
+📬 Contacto
+📧 joseph.guagnelli@gmail.com
+🔗 LinkedIn
+🐙 GitHub
