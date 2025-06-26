@@ -46,6 +46,11 @@ En un mundo donde las amenazas cibernéticas son cada vez más frecuentes y sofi
 
 > Este repositorio forma parte de un proceso de aprendizaje continuo, con el objetivo de dominar análisis de datos aplicados a ciberseguridad. Cualquier sugerencia, pull request o crítica constructiva es bienvenida.
 
+
+📬 Contacto
+📧 joseph.guagnelli@gmail.com
+🔗 LinkedIn
+🐙 GitHub
 ---
 
 ### 🚀 Ejecutar el script
@@ -57,7 +62,4 @@ En un mundo donde las amenazas cibernéticas son cada vez más frecuentes y sofi
 # Ejecutar el script principal
 python Threatlens1.py
 
-📬 Contacto
-📧 joseph.guagnelli@gmail.com
-🔗 LinkedIn
-🐙 GitHub
+
