@@ -1,65 +1,78 @@
-# 🛡️ ThreatLens — UNSW-NB15 Analysis Toolkit
-
+# 🛡️ ThreatLens — UNSW-NB15 Analysis & Classification Toolkit
 **Autor:** Carlos Joseph Guagnelli  
 **Fecha de inicio:** 2025-06-24  
-**Estado:** 🚧 En desarrollo
+**Estado:** 🚧 En desarrollo activo
 
 ## 📘 Descripción del proyecto
-
-**ThreatLens** es una herramienta de análisis y visualización inicial del dataset UNSW-NB15, un conjunto de datos realista y ampliamente utilizado para tareas de detección de intrusos en redes. El objetivo del proyecto es entender la distribución del tráfico, diferenciar eventos normales de ataques y preparar el camino hacia la creación de modelos de detección basados en machine learning.
+ThreatLens es una herramienta de análisis, preprocesamiento y clasificación del dataset UNSW-NB15, diseñado para entrenar y evaluar sistemas de detección de intrusos (IDS). Esta herramienta busca construir un pipeline completo de machine learning, desde la exploración de datos hasta la clasificación multiclase de ataques utilizando redes neuronales.
 
 ## 🧠 Motivación
-
-En un mundo donde las amenazas cibernéticas son cada vez más frecuentes y sofisticadas, entrenar sistemas que puedan reconocer comportamientos anómalos es una prioridad. Este proyecto nace de la necesidad de explorar y comprender cómo se representan estos eventos en datos y cómo podemos utilizar herramientas como Python para analizarlos de forma visual, estructurada y escalable.
+En un mundo cada vez más interconectado, las amenazas cibernéticas requieren respuestas automatizadas y adaptativas. ThreatLens nace de la necesidad de entrenar modelos inteligentes capaces de reconocer patrones maliciosos en grandes volúmenes de tráfico de red. Este proyecto fusiona análisis de datos, visualización y deep learning en una sola estructura modular y escalable.
 
 ## 📂 Dataset utilizado
-
-- **Nombre:** UNSW-NB15 (versión training-set)
+- **Nombre:** UNSW-NB15 (training-set)
 - **Origen:** Australian Centre for Cyber Security
-- **Características:**  
-  - 45 columnas (características numéricas y categóricas)
-  - 175,341 registros
-  - Incluye etiquetas binarias (`label`: 0 = normal, 1 = ataque) y categorías de ataque (`attack_cat`)
+- **Registros:** 175,341  
+- **Columnas:** 45 (variables numéricas y categóricas)  
+- **Etiquetas:**
+  - `label`: 0 = tráfico normal, 1 = ataque
+  - `attack_cat`: categoría del ataque (10 clases)
 
 ## ✅ Avances actuales
 
-- ✅ Dataset cargado y explorado con `pandas`
-- ✅ Verificación de tipos de datos y valores nulos
-- ✅ Estadísticas descriptivas generales
-- ✅ Análisis de distribución entre tráfico normal y malicioso
+- ✅ Exploración del dataset con `pandas`
+- ✅ Visualización y análisis de distribución normal vs ataque (`label`)
+- ✅ Conteo y análisis por categoría de ataque (`attack_cat`)
+- ✅ Codificación numérica de `attack_cat` con `LabelEncoder`
+- ✅ One-Hot Encoding para variables categóricas (`proto`, `service`, `state`)
+- ✅ División del dataset en entrenamiento y prueba (80/20, estratificada)
+- ✅ Escalado de características numéricas con `StandardScaler`
+- ✅ Entrenamiento de red neuronal con `TensorFlow` y `Keras`
+- ✅ Precisión de validación superior al 99% en clasificación multiclase
 
 ## 🛠️ Tecnologías utilizadas
 
-- Python 3.13 (entorno virtual activado)
-- Bibliotecas: `pandas`, `numpy`, `seaborn`, `matplotlib`
+- **Lenguaje:** Python 3.11 (entorno virtual con venv)
+- **Librerías principales:**
+  - `pandas`, `numpy` → manejo de datos
+  - `matplotlib`, `seaborn` → visualización
+  - `scikit-learn` → preprocesamiento, codificación, partición
+  - `tensorflow`, `keras` → red neuronal multicapa
+  - *(pendiente: `imbalanced-learn` para balanceo de clases)*
 
-## 🗺️ Próximos pasos
+## 📊 Resultados iniciales del modelo
+Modelo secuencial simple con 2 capas ocultas (ReLU) y softmax final:
+- 🔹 Accuracy de validación (`val_accuracy`): **99.93%**
+- 🔹 Loss de validación (`val_loss`): **0.0047**
+- 🔹 Epochs entrenadas: 10
+> ⚠️ Aunque los resultados son excelentes, es necesario revisar el balance de clases y evaluar con métricas adicionales como F1-score y matriz de confusión para evitar falsas certezas.
 
-1. Análisis detallado por categoría de ataque (`attack_cat`)
-2. Codificación de variables categóricas
-3. Detección de outliers y correlaciones
-4. Preparación de datos para Machine Learning (normalización, partición, etc.)
-5. Entrenamiento de modelos (SVM, Árboles, Random Forest, etc.)
-6. Evaluación y visualización de desempeño
+## 📈 Próximos pasos
+
+- [ ] Rebalancear el dataset con **SMOTE** u otras técnicas (`imbalanced-learn`)
+- [ ] Implementar métricas adicionales: F1-score, recall por clase, matriz de confusión
+- [ ] Añadir **validación cruzada** y **early stopping**
+- [ ] Experimentar con arquitecturas más profundas o convolucionales
+- [ ] Guardar y reutilizar el modelo entrenado (`.h5`)
+- [ ] Documentar pipeline completo para futuras pruebas
 
 ## ✍️ Notas personales
+Este proyecto representa una transición entre teoría y práctica en ciberseguridad basada en datos. La idea es construir una base sólida para aplicar inteligencia artificial a problemas reales de defensa digital. Agradezco sugerencias, pull requests y cualquier retroalimentación constructiva.
 
-> Este repositorio forma parte de un proceso de aprendizaje continuo, con el objetivo de dominar análisis de datos aplicados a ciberseguridad. Cualquier sugerencia, pull request o crítica constructiva es bienvenida.
+## 📬 Contacto
 
+📧 joseph.guagnelli@gmail.com  
+🔗 [LinkedIn](https://www.linkedin.com/in/carlos-joseph-guagnelli-villagran-544849216/)  
+🐙 [GitHub](https://github.com/GuagnelliData)
 
-📬 Contacto
-📧 joseph.guagnelli@gmail.com
-🔗 LinkedIn
-🐙 GitHub
----
-
-### 🚀 Ejecutar el script
+## 🚀 Ejecutar el script
 
 ```bash
-# Activar entorno virtual
-.\venv\Scripts\Activate
+# Activar entorno virtual (PowerShell)
+.\.venv311\Scripts\Activate
+
+# Instalar dependencias
+pip install -r requirements.txt
 
 # Ejecutar el script principal
 python Threatlens1.py
-
-
