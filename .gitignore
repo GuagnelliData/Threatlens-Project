@@ -1,0 +1,22 @@
+# Entornos virtuales
+.venv/
+.venv311/
+
+# Archivos compilados
+__pycache__/
+*.pyc
+
+# Archivos temporales y de sistema
+.DS_Store
+Thumbs.db
+
+# Datos y resultados
+data/
+*.csv
+*.h5
+*.model
+*.pkl
+*.log
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
